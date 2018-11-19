@@ -36,7 +36,7 @@ public class BoxLoginSteps {
         if (pageName.equals("Home"))
             titleFlag = wait.until(ExpectedConditions.titleIs("All Files | Powered By Box"));
         if (titleFlag) {
-            System.out.println("Success Correct page is displayed\n");
+            System.out.println("Success Correct page displayed\n");
         } else {
             System.out.println("Fail:-Title doesnt match with expectation");
 

@@ -1,0 +1,28 @@
+download gauge zip file and extract it to specified location..
+add gauge folder path in 'PATH' environment variables.
+_______________________________
+For MacOS
+brew update
+brew install gauge
+____________________________
+
+Note : You are required to just copy NS PASTE IN COMMAND LINE
+>> gauge install java
+>> gauge install html-report
+>> gauge install xml-report
+>> gauge install spectacle
+
+Install java gauge plugin to start with java gauge project in intellij
+
+Creating a Java project in intellij
+File -> New Project.
+Choose 'Gauge'
+Choose the project location and java sdk
+Finish
+
+
+gauge project git repository
+username: ruby060689
+email: kimsandhu@gmail.com
+Password: qacult12345
+https://ordina-jworks.github.io/testing/2018/01/05/Gauge-automated-testing.html

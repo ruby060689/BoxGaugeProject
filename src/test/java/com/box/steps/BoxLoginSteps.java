@@ -7,7 +7,9 @@ import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.TableRow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,7 +26,7 @@ public class BoxLoginSteps {
         String appUrl = "https://app.box.com";
         driver.get(appUrl);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
     @Step("Then box <pageName> page should display")
@@ -68,12 +70,14 @@ public class BoxLoginSteps {
         logoutLink.click();
     }
 
+
+
+
     @AfterSuite
     public void afterSuite() {
         if (driver != null) {
             driver.quit();
             //driver = null;
         }
-    }
+    }}
 
-}

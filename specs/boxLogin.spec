@@ -18,3 +18,29 @@ tags: login
 * Then box "Home" page should display
 * When I click on logout
 * Then box "Login" page should display
+
+Second scenario
+--------------
+* I navigate to box app
+* Then box "Login" page should display
+* I login with following credentials
+    |username             |password    |
+    |---------------------|------------|
+    |nancydhingra131@gmail.com  |nancy131    |
+* Then box "Home" page should display
+* Then create new Folder
+*  When I click on logout
+* Then box "Login" page should display
+
+Third scenario
+--------------
+* I navigate to box app
+* Then box "Login" page should display
+* I login with following credentials
+    |username             |password    |
+    |---------------------|------------|
+    |nancydhingra131@gmail.com  |nancy131    |
+* Then box "Home" page should display
+* Then delete the new Folder
+*  When I click on logout
+* Then box "Login" page should display

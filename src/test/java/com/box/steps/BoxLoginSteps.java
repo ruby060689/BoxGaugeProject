@@ -70,61 +70,8 @@ public class BoxLoginSteps {
         logoutLink.click();
     }
 
-    @Step("Then create new Folder")
-    public void create_new_folder() throws InterruptedException {
-
-        // CreateNewFolder.newfolder();
-        WebElement dropdown_new = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[@class='text'])[2]")));
-        dropdown_new.click();
-        //Thread.sleep(2000);
-
-// click on Folder
-        WebElement folder = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\'menu-newdropdown\']/li[1]/button")));
-        folder.click();
-
-        WebElement folderName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name=\'folderName\']")));
-        folderName.sendKeys("Ruby");
-
-        WebElement btn_create = driver.findElement(By.xpath("//span[contains(text(),'Create')]"));
-        btn_create.click();
 
 
-        Thread.sleep(2000);
+
     }
-
-    @Step("Then delete the new Folder")
-    public void delete_folder() throws InterruptedException {
-
-       //WebElement folderlocation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Ruby')]")));
-
-        WebElement folderlocation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\'mod-file-list-minimal-1\']/div[1]/ol/li[2]")));
-
-
-        folderlocation.click();
-
-       // WebElement clickForMoreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), '...')]")));
-        WebElement clickForMoreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@tabindex ='0'])[2]")));
-
-        clickForMoreOptions.click();
-
-        Actions action = new Actions(driver);
-        action.contextClick(folderlocation);
-        WebElement moreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'More Actions')]")));
-        moreOptions.click();
-
-        WebElement trash = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Trash')]")));
-        trash.click();
-        action.build().perform();
-
-        Thread.sleep(2000);
-    }
-
-
-    @AfterSuite
-    public void afterSuite() {
-        if (driver != null) {
-            driver.quit();
-            //driver = null;
-        }
-    }}
 

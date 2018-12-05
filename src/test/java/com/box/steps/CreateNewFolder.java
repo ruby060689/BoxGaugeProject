@@ -25,16 +25,18 @@ public class CreateNewFolder{
     WebDriverWait wait = driverObj.wait;
 
     String folderName = "NewFolder"+Math.random();
+
     @Step("Then create new Folder")
     public void create_new_folder() throws InterruptedException {
 
         // CreateNewFolder.newfolder();
-        WebElement dropdown_new = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[@class='text'])[2]")));
-        dropdown_new.click();
+        wait.until(ExpectedConditions.attributeToBe(By.cssSelector("div[class=\"action-bar-create-buttons\"]"), "data-resin-feature", "createbuttons"));
+        WebElement newoption= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[aria-owns=\"menu-newdropdown\"]")));
+        newoption.click();
         //Thread.sleep(2000);
 
         // click on Folder
-        WebElement folder = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\'menu-newdropdown\']/li[1]/button")));
+        WebElement folder= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[data-resin-target=\"newfolder\"]")));
         folder.click();
 
         WebElement folderNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name=\'folderName\']")));
@@ -50,28 +52,14 @@ public class CreateNewFolder{
     @Step("Then delete the new Folder")
     public void delete_folder() throws InterruptedException {
 
-        //WebElement folderlocation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Ruby')]")));
-
-        WebElement folderlocation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\'mod-file-list-minimal-1\']/div[1]/ol/li[2]")));
-
-
-        folderlocation.click();
-
-        // WebElement clickForMoreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), '...')]")));
-        WebElement clickForMoreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@tabindex ='0'])[2]")));
-
-        clickForMoreOptions.click();
-
-        Actions action = new Actions(driver);
-        action.contextClick(folderlocation);
-        WebElement moreOptions = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'More Actions')]")));
-        moreOptions.click();
-
-        WebElement trash = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Trash')]")));
-        trash.click();
-        action.build().perform();
-
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'"+folderName+"')]]/span[contains(text(),'Files')]")));
+        WebElement selectElement = new WebDriverWait(driver,60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'"+folderName+"')]]")));
+        selectElement.click();
+        WebElement trashBtn=wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class=\"btn delete-btn delete-svg\"]")));
+        trashBtn.click();
+        WebElement okay= wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class=\"btn btn-primary popup-confirm-btn\"]")));
+        okay.click();
+        System.out.println("Folder Deleted Successfully");
     }
 
     public final static String dropdown_New = "//*[@id=\'mod-action-bar-1\']";

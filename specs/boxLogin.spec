@@ -29,6 +29,7 @@ Second scenario
     |nancydhingra131@gmail.com  |nancy131    |
 * Then box "Home" page should display
 * Then create new Folder
+* Then delete the new Folder
 *  When I click on logout
 * Then box "Login" page should display
 
@@ -41,6 +42,9 @@ Third scenario
     |---------------------|------------|
     |nancydhingra131@gmail.com  |nancy131    |
 * Then box "Home" page should display
-* Then delete the new Folder
+* When user rename the folder from "serious123" to "TestRename"
+* Then folder should be renamed to "TestRename"
+* When user rename the folder from "TestRename" to "serious123"
+* Then folder should be renamed to "serious123"
 *  When I click on logout
 * Then box "Login" page should display
